@@ -7,6 +7,11 @@
         private $attackPoint = 10;
         private $intelligence = 30; // 魔法攻撃
 
+        public function __construct($name)
+        {
+            parent::__construct($name,$this->hitPoint,$this->attackPoint);
+        }
+
         public function doAttack($enemy)
         {
             if (rand(1,2) === 1) {

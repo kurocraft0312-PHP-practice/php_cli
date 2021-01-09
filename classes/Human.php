@@ -26,14 +26,17 @@
                 $this->hitPoint = 0;
             }
         }
+        public function recoveryDamage($heal,$target)
+        {
+            $this->hitPoint += $heal;
+            if ($this->hitPoint > $target::MAX_HITPOINT) {
+                $this->hitPoint = $target::MAX_HITPOINT; // 最大HP以上に回復する値が増えないように上限を設定する
+            }
+        }
         public function getName()
         {
             return $this->name;
         }
-        // public function setName($name)
-        // {
-        //     $this->name = $name;
-        // }
         public function getHitPoint()
         {
             return $this->hitPoint;
