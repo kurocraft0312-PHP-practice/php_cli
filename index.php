@@ -2,12 +2,11 @@
    require_once('classes/Human.php');
    require_once('classes/Enemy.php');
    require_once('classes/Brave.php');
+   require_once('./classes/BlackMage.php');
+   require_once('./classes/WhiteMage.php');
 
    $tiida = new Brave("ティーダ");
    $goblin = new Enemy("ゴブリン");
-
-   // $tiida->name = "ティーダ";
-   // $goblin->name = "ゴブリン";
 
    $turn = 1; // ターン
 
