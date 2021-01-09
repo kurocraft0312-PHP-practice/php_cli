@@ -3,9 +3,9 @@
     class Human
     {
         const MAX_HITPOINT = 100;
-        public $name;
-        public $hitPoint = 100; //現在のHP
-        public $attackPoint = 20; // 攻撃力
+        private $name;
+        private $hitPoint = 100; //現在のHP
+        private $attackPoint = 20; // 攻撃力
         public function doAttack($enemy)
         {
             echo "『" . $this->name . "』の攻撃！\n";
