@@ -16,7 +16,7 @@
    $enemies[] = new Enemy('モルボル',30);
 
    // $tiida = new Brave("ティーダ");
-   $goblin = new Enemy("ゴブリン");
+   // $goblin = new Enemy("ゴブリン");
 
    $turn = 1; // ターン
 
