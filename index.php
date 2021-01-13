@@ -3,6 +3,7 @@
    require_once('classes/Enemy.php');
    require_once('classes/Brave.php');
    require_once('./classes/BlackMage.php');
+   require_once('./classes/Message.php');
    require_once('./classes/WhiteMage.php');
 
    $members = array();
@@ -22,47 +23,56 @@
 
    $isFinishFlg = false;
 
+   $messageObj = new Message;
+
    while(!$isFinishFlg) {
    // while ($tiida->getHitPoint() > 0 && $goblin->getHitPoint() > 0) {// どちらかのHPが0になるまでループ
       echo "*** $turn ターン目 ***\n\n";
 
-      foreach ($members as $member) {
-         echo $member->getName() . " : " . $member->getHitPoint() . "/" . $member::MAX_HITPOINT . "\n";
-      }
-      echo "\n";
-      foreach ($enemies as $enemy) {
-         echo $enemy->getName() . " : " . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
-      }
-      echo "\n";
+      // 仲間の表示
+      $messageObj->displayStatusMessage($members);
+
+      // 敵の表示
+      $messageObj->displayStatusMessage($enemies);
+
+      // 仲間の攻撃
+      $messageObj->displayAttackMessage($members,$enemies);
+
+      // 敵の攻撃
+      $messageObj->displayAttackMessage($enemies,$members);
+      
+      // foreach ($members as $member) {
+      //    echo $member->getName() . " : " . $member->getHitPoint() . "/" . $member::MAX_HITPOINT . "\n";
+      // }
+      // echo "\n";
+      // foreach ($enemies as $enemy) {
+      //    echo $enemy->getName() . " : " . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
+      // }
+      // echo "\n";
 
       // echo $tiida->getName() . " : " . $tiida->getHitPoint() . "/" . $tiida::MAX_HITPOINT . "\n";
       // echo $goblin->getName() . " : " . $goblin->getHitPoint() . "/" . $goblin::MAX_HITPOINT . "\n";
       // echo "\n";
 
-      foreach ($members as $member) {
+      // foreach ($members as $member) {
          // $enemyIndex = rand(0,count($enemies) - 1);
          // $enemy = $enemies[$enemyIndex];
          // 白魔道士の場合、味方のオブジェクトも渡す
-         if (get_class($member) == "WhiteMage") {
-            $attackResult = $member->doAttackWhiteMage($enemies, $members);
-         } else {
-            $attackResult = $member->doAttack($enemies);
-         }
-         echo "\n";
-      }
-      echo "\n";
-
-      foreach ($enemies as $enemy) {
-         // $memberIndex = rand(0, count($members) - 1);
-         // $member = $members[$memberIndex];
-         $enemy->doAttack($members);
-         echo "\n";
-      }
-
-      // $tiida->doAttack($goblin);
+      //    if (get_class($member) == "WhiteMage") {
+      //       $attackResult = $member->doAttackWhiteMage($enemies, $members);
+      //    } else {
+      //       $attackResult = $member->doAttack($enemies);
+      //    }
+      //    echo "\n";
+      // }
       // echo "\n";
-      // $goblin->doAttack($tiida);
-      echo "\n";
+
+      // foreach ($enemies as $enemy) {
+      //    $enemy->doAttack($members);
+      //    echo "\n";
+      // }
+
+      // echo "\n";
 
       $deathCnt = 0;
       foreach ($members as $member) {
@@ -97,13 +107,18 @@
 }
 
    echo "★★★ 戦闘終了 ★★★\n\n";
-   // echo $tiida->getName() . " : " . $tiida->getHitPoint() . "/" . $tiida::MAX_HITPOINT . "\n";
-   // echo $goblin->getName() . " : " . $goblin->getHitPoint() . "/" . $goblin::MAX_HITPOINT . "\n\n";
-   foreach ($members as $member) {
-      echo $member->getName() . " : " . $member->getHitPoint() . "/" . $member::MAX_HITPOINT . "\n";
-   }
-   echo "\n";
-   foreach ($enemies as $enemy) {
-      echo $enemy->getName() . " : " . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
-   }
+
+   // 仲間の表示
+   $messageObj->displayStatusMessage($members);
+
+   // 敵の表示
+   $messageObj->displayStatusMessage($enemies);
+
+   // foreach ($members as $member) {
+      // echo $member->getName() . " : " . $member->getHitPoint() . "/" . $member::MAX_HITPOINT . "\n";
+   // }
+   // echo "\n";
+   // foreach ($enemies as $enemy) {
+      // echo $enemy->getName() . " : " . $enemy->getHitPoint() . "/" . $enemy::MAX_HITPOINT . "\n";
+   // }
 ?>
