@@ -1,5 +1,4 @@
 <?php
-    // 人間クラス
     class Human
     {
         const MAX_HITPOINT = 100;
