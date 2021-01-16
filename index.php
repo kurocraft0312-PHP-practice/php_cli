@@ -1,11 +1,19 @@
 <?php
-   require_once('classes/Lives.php');
-   require_once('classes/Human.php');
-   require_once('classes/Enemy.php');
-   require_once('classes/Brave.php');
-   require_once('./classes/BlackMage.php');
-   require_once('./classes/Message.php');
-   require_once('./classes/WhiteMage.php');
+   // require_once('classes/Lives.php');
+   // require_once('classes/Human.php');
+   // require_once('classes/Enemy.php');
+   // require_once('classes/Brave.php');
+   // require_once('./classes/BlackMage.php');
+   // require_once('./classes/Message.php');
+   // require_once('./classes/WhiteMage.php');
+
+   require_once('./lib/Loader.php');
+
+   // オートロード（上から順に特定のディレクトリへrequire_onceしてくれる）
+   $loader = new Loader();
+   // classesフォルダの中身をロード対象ディレクトリとして登録
+   $loader->regDirectory(__DIR__ . '/classes');
+   $loader->register();
 
    $members = array();
    $members[] = new Brave('ティーダ');
