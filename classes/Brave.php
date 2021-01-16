@@ -17,15 +17,7 @@
                 return false;
             }
             // ターゲットの決定
-            $enemy = $this->selectTarget($enemies);
-
-            // 自身のHPが0かどうかを判定
-            // if ($this->hitPoint <= 0) {
-            //     return false;
-            // }
-
-            // $enemyIndex = rand(0,count($enemies) - 1);
-            // $enemy = $enemies[$enemyIndex];            
+            $enemy = $this->selectTarget($enemies);         
 
             // 乱数の発生
             if(rand(1,3) === 1) {
