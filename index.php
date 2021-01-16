@@ -1,13 +1,6 @@
 <?php
-   // require_once('classes/Lives.php');
-   // require_once('classes/Human.php');
-   // require_once('classes/Enemy.php');
-   // require_once('classes/Brave.php');
-   // require_once('./classes/BlackMage.php');
-   // require_once('./classes/Message.php');
-   // require_once('./classes/WhiteMage.php');
-
    require_once('./lib/Loader.php');
+   require_once('./lib/Utility.php');
 
    // オートロード（上から順に特定のディレクトリへrequire_onceしてくれる）
    $loader = new Loader();
@@ -30,21 +23,6 @@
    $isFinishFlg = false;
 
    $messageObj = new Message;
-
-   // 終了条件の判定
-   function isFinish($objects)
-   {
-      $deathCnt = 0; // HPが0以下の仲間の数
-      foreach ($objects as $object) {
-         if ($object->getHitPoint() > 0) {
-            return false;
-         }
-         $deathCnt++;
-      }
-      if ($deathCnt === count($objects)) {
-         return true;
-      }
-   }
 
    while(!$isFinishFlg) {
 
