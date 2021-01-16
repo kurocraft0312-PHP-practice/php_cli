@@ -12,14 +12,22 @@
 
         public function doAttack($enemies)
         {
-            // 自身のHPが0かどうかを判定
-            if ($this->hitPoint <= 0) {
+            // 自分のHPが0以上か、敵のHPが0以上かなどをチェックするメソッドを用意
+            if (!$this->isEnableAttack($enemies)) {
                 return false;
             }
+            // ターゲットの決定
+            $enemy = $this->selectTarget($enemies);
 
-            $enemyIndex = rand(0,count($enemies) - 1);
-            $enemy = $enemies[$enemyIndex];            
+            // 自身のHPが0かどうかを判定
+            // if ($this->hitPoint <= 0) {
+            //     return false;
+            // }
 
+            // $enemyIndex = rand(0,count($enemies) - 1);
+            // $enemy = $enemies[$enemyIndex];            
+
+            // 乱数の発生
             if(rand(1,3) === 1) {
                 echo "『" . $this->getName() . "』のスキルが発動した！\n";
                 echo "『ぜんりょくぎり』！！\n";
