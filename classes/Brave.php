@@ -5,9 +5,20 @@
         private $hitPoint = self::MAX_HITPOINT;
         private $attackPoint = 30;
 
-        public function __construct($name)
+        private static $instance;
+
+        private function __construct($name)
         {
             parent::__construct($name, $this->hitPoint,$this->attackPoint);
+        }
+
+        // シングルトンで常にインスタンスは1つしか生成しない
+        public static function getInstance($name)
+        {
+            if (empty(self::$instance)) {
+                self::$instance = new Brave($name);
+            }
+            return self::$instance;
         }
 
         public function doAttack($enemies)

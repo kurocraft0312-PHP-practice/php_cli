@@ -10,7 +10,7 @@
    $loader->register();
 
    $members = array();
-   $members[] = new Brave(CharacterName::TIIDA);
+   $members[] = Brave::getInstance(CharacterName::TIIDA);
    $members[] = new WhiteMage(CharacterName::YUNA);
    $members[] = new BlackMage(CharacterName::RULU);
 
