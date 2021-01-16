@@ -30,12 +30,10 @@
             }
             return true;
         }
-        public function tookDamage($damage)
+
+        public function getAttackPoint()
         {
-            $this->hitPoint -= $damage;
-            if ($this->hitPoint < 0) { // HPの下限を0に設定
-                $this->hitPoint = 0;
-            }
+            return $this->attackPoint;
         }
     }
 ?>
